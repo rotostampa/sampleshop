@@ -1,0 +1,22 @@
+---
+// src/pages/blog/index.astro
+
+import { getCollection } from "astro:content";
+
+// Fetch the blog posts
+const posts = await getCollection("blog");
+---
+
+<h1>Blog</h1>
+
+<ul>
+  {posts.map((post) => (
+    <li>
+      <a href={`/blog/${post.slug}`}>
+        <h2>{post.data.title}</h2>
+        <p>{post.data.description}</p>
+        <time>{post.data.date.toLocaleDateString()}</time>
+      </a>
+    </li>
+  ))}
+</ul>
