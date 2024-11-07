@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import Layout from './src/layouts/Layout.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection("blog");
@@ -9,7 +10,32 @@ export async function getStaticPaths() {
 	}));
 }
 
-const { title, description, ogImage } = Astro.props.post.data;
-const { Content } = await Astro.props.post.render();
+const { title, description, date, ogImage } = Astro.props.post.data;
 ---
-<Content />
+
+<!-- Render the blog post in a cute card -->
+
+<Layout title={title}>
+	<div class="card" style="width: 300px; margin: 20px;">
+
+	  <div class="card-content">
+	    <div class="media">
+	      <div class="media-content has-text-centered">
+	        <h1 class="title is-4">{title}</h1>
+	        <p class="subtitle is-6">{new Date(date).toLocaleDateString()}</p>
+	      </div>
+	    </div>
+
+	    <div class="content">
+	      <p>{description}</p>
+	    </div>
+	  </div>
+
+	  <div class="card-image">
+	    <figure class="image is-4by3">
+	      <img src={ogImage.src} alt={title} />
+	    </figure>
+	  </div>
+
+	</div>
+</Layout>
