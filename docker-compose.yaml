@@ -1,0 +1,14 @@
+services:
+  strapi:
+    image: strapi/strapi:3.6.8-node12-alpine
+    container_name: strapi
+    environment:
+      DATABASE_CLIENT: sqlite
+      DATABASE_FILENAME: ./data/data.sqlite
+      NODE_ENV: development
+    volumes:
+      - ./app:/srv/app
+    ports:
+      - "1337:1337"
+
+
