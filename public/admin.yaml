@@ -1,7 +1,9 @@
 backend:
-  name: git-gateway
-  repo: username/reponame
-  branch: main
+  name: github
+  repo: rotostampa/rotodocs  # Replace with your repository
+  branch: master               # Branch to commit to
+  auth_scope: repo           # Ensure it has repo scope for access
+
 local_backend: true
 media_folder: src/assets/img
 public_folder: src/assets/img
