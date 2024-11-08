@@ -15,18 +15,14 @@ export default defineConfig({
   // Get this from tina.io
   token: process.env.TINA_TOKEN,
 
-  trailingSlash: 'always',
-
   build: {
     outputFolder: "admin",
     publicFolder: "public",
-    assets: 'assets',
-    format: 'directory'
   },
   media: {
     tina: {
       mediaRoot: "",
-      publicFolder: "src/assets",
+      publicFolder: "public",
     },
   },
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
